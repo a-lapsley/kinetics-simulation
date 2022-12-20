@@ -1,0 +1,8 @@
+{
+    "xvar":"t",
+    "yvars":["X", "Y", "Z"],
+    "xlabel":"t / S",
+    "ylabel":"concentration / M",
+    "yscale":"log",
+    "scatter":false
+}
