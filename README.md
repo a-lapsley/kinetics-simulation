@@ -49,3 +49,11 @@ Program to simulate reactions over time for Part II Chemistry Programming Practi
 * `ylabel` Label for the y-axis
 * `yscale` Specifies what scaling should be used for the y-axis, e.g. `linear` for a linear scale, `log` for a logarithmic scale
 * `scatter` If set to `true` displays individual data points as well as the curve on the graph. 
+
+## Included data files
+Some pregenerated data output files are included as examples, and to save computation time, as some of these files took over an hour to generate.
+* `oregonator_9s_test`  Test run of the Oregonator system over a 9s time period. 
+* `oregonator_run_90s`  Run of the Oregonator system over a 90s time period. 
+* `protein_folding_run` Data for the simulation of the protein folding system with no denaturant over time. 
+* `urea_fold_trial(X)`  Trial runs of the urea concentration variation of the protein folding system with differing parameters. In runs 1 and 2 some of the concentrations weren't allowed to reach equillibrium and so the graph looks deformed. In run 3 all concentrations were allowed to reach equillibrium but only a few urea concentrations were sampled.
+* `urea_fold`   Final run for the urea concentration graph where all reactions were allowed to equillibriate and 50 urea concentrations were sampled. 
