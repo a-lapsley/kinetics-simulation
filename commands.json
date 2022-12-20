@@ -1,0 +1,30 @@
+{
+    "time_simulate":{
+        "syntax":"time_simulate <mode> <json>",
+        "description":"Generates data file for simulation of reaction over time",
+        "<mode>":"Specifies mode to simulate reaction",
+        "\tAvailable modes:":"",
+        "\tfixed":"\tRuns the reaction a fixed number of times, specified by max_cycles",
+        "\tequillibrium":"\tRuns reaction until it reaches equillibrium, or max_cycles is reached",
+        "<json>":"directory of config file containing reaction parameters"
+    },
+    "plot":{
+        "syntax":"plot <json>",
+        "description":"Plots data in a specified data file using parameters from json file",
+        "<json>":"directory of config file containing parameters for the plot"
+    },
+    "protein_fold_data":{
+        "syntax":"protein_fold_data <json>",
+        "description":"Generates data file containing equillibrium concentrations of species at varying urea concentration",
+        "<json>":"directory of config file containing parameters for this urea range"
+    },
+    "help":{
+        "syntax":"help [<command>]",
+        "description":"Displays a list of available commands. If <command> is specified, returns syntax information for specific command",
+        "<command>":"Command to return syntax information for"
+    },
+    "quit":{
+        "syntax":"quit",
+        "description":"Exits the program"
+    }
+}

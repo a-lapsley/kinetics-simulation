@@ -1,0 +1,56 @@
+{
+    "parameters":{
+        "delta_t":1E-7,
+        "equillibrium_threshold":1E-5,
+        "max_cycles":1E6,
+        "log_frequency":1E5,
+        "sample_frequency":10,
+        "urea_min": 0,
+        "urea_max": 8,
+        "urea_steps": 4
+    },
+    "species":[
+        {
+            "name":"D",
+            "init_conc":1000
+        },
+        {
+            "name":"I",
+            "init_conc":0
+        },
+        {
+            "name":"N",
+            "init_conc":0
+        }
+    ],
+    "processes":[
+        {
+            "name": "R15_f",
+            "reactants": ["D"],
+            "products": ["I"],
+            "rate": 26000,
+            "denaturant_constant": -1.68
+        },
+        {
+            "name": "R15_u",
+            "reactants": ["I"],
+            "products": ["D"],
+            "rate": 6E-2,
+            "denaturant_constant": 0.95
+        },
+        {
+            "name": "R16_f",
+            "reactants": ["I"],
+            "products": ["N"],
+            "rate": 730,
+            "denaturant_constant": -1.72
+        },
+        {
+            "name": "R16_u",
+            "reactants": ["N"],
+            "products": ["I"],
+            "rate": 7.5E-4,
+            "denaturant_constant": 1.2
+        }
+    ]
+}

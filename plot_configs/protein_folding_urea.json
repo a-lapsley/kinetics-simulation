@@ -1,0 +1,8 @@
+{
+    "xvar":"urea",
+    "xlabel":"[urea] / M",
+    "ylabel":"concentration / M",
+    "yscale":"linear",
+    "yvars":["D", "I", "N"],
+    "scatter":true
+}

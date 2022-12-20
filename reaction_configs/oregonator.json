@@ -1,0 +1,71 @@
+{
+    "parameters":{
+        "delta_t":1E-6,
+        "equillibrium_threshold":1E-5,
+        "max_cycles": 9E7,
+        "log_frequency":1E5,
+        "sample_frequency": 1E5
+    },
+    "species":[
+        {
+            "name":"A",
+            "init_conc":0.06
+        },
+        {
+            "name":"B",
+            "init_conc":0.06
+        },
+        {
+            "name":"P",
+            "init_conc":0.0
+        },
+        {
+            "name":"Q",
+            "init_conc":0.0
+        },
+        {
+            "name":"X",
+            "init_conc":1.584893192E-10
+        },
+        {
+            "name":"Y",
+            "init_conc":3.01995172E-7
+        },
+        {
+            "name":"Z",
+            "init_conc":4.786300923E-8
+        }
+    ],
+    "processes":[
+        {
+            "name":"k_1",
+            "reactants": ["A", "Y"],
+            "products": ["X", "P"],
+            "rate": 1.34
+        },
+        {
+            "name":"k_2",
+            "reactants": ["X", "Y"],
+            "products": ["P"],
+            "rate": 1.6E9
+        },
+        {
+            "name":"k_3",
+            "reactants": ["B", "X"],
+            "products": ["X", "X", "Z"],
+            "rate": 8E3
+        },
+        {
+            "name":"k_4",
+            "reactants": ["X", "X"],
+            "products": ["Q"],
+            "rate": 4E7
+        },
+        {
+            "name":"k_5",
+            "reactants": ["Z"],
+            "products": ["Y"],
+            "rate": 1
+        }
+    ]
+}
