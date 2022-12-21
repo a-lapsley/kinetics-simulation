@@ -1,5 +1,4 @@
 from reaction import *
-from species import *
 import numpy as np
 import matplotlib.pyplot as plt
 import json
@@ -251,7 +250,7 @@ def simulate_fixed(reaction, delta_t, steps, log=0, sample_freq=1):
 def simulate_to_equillibrium(
     reaction, 
     delta_t, 
-    threshold, 
+    gradient, 
     max_cycles=0,
     log=0,
     sample_freq=1
@@ -282,6 +281,7 @@ def simulate_to_equillibrium(
     equillibrium_reached = False
     i = 0
     c = reaction.get_concs()
+    threshold = gradient * delta_t
 
     #Run the simulation indefinitely until 'equillibrium' is reached
     while not equillibrium_reached:
@@ -505,8 +505,7 @@ def reaction_from_json(json_file, denaturant_conc=0):
     for i in data["species"]:
         name = i["name"]
         init_conc = i["init_conc"]
-        species = Species(name, init_conc)
-        reaction.add_species(species)
+        reaction.add_species(name, init_conc)
 
     for entry in data["processes"]:
         reactants = entry["reactants"]
@@ -517,8 +516,7 @@ def reaction_from_json(json_file, denaturant_conc=0):
             rate = denaturant_rate_multiply(rate, 
                                             denaturant_conc, 
                                             denaturant_constant)
-        process = Process(reactants, products, rate)
-        reaction.add_process(process)
+        reaction.add_process(reactants, products, rate)
 
     parameters = data["parameters"]
     output = (reaction, parameters)

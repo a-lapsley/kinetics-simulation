@@ -8,7 +8,7 @@ class Reaction:
         species_list:   dict    Stores each species in the reaction as an
                                 entry in a dictionary.
         processes:      array   Stores each process in the reaction as a
-                                Process object in an array
+                                dictionary object in an array
 
     Methods:
         add_species(self, name, species)    Adds a species to list
@@ -35,8 +35,13 @@ class Reaction:
             "delta_conc":0.0
         }
     
-    def add_process(self, process):
+    def add_process(self, reactants, products, rate):
         """Adds a Proces object to the list of processes"""
+        process = {
+            "reactants":reactants,
+            "products":products,
+            "rate":rate
+        }
         self.processes.append(process)
 
     def tick(self, delta_t):
@@ -48,9 +53,9 @@ class Reaction:
         #Iterate over each process in the list and calculate the necessary
         #change in concentration of each species for the given time interval
         for process in self.processes:
-            reactants = process.get_reactants()
-            products = process.get_products()
-            k = process.get_rate()
+            reactants = process["reactants"]
+            products = process["products"]
+            k = process["rate"]
 
             #Calculate change in concentration for this process step
             change = k * delta_t
@@ -92,9 +97,9 @@ class Reaction:
             print(key, conc)
 
         for process in self.processes:
-            reactants = process.get_reactants()
-            products = process.get_products()
-            rate = process.get_rate()
+            reactants = process["reactants"]
+            products = process["products"]
+            rate = process["rate"]
             print(reactants, products, rate)
     
 
