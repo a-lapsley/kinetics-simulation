@@ -1,7 +1,7 @@
 {
     "parameters":{
         "delta_t":1E-6,
-        "equillibrium_threshold":1E-5,
+        "equillibrium_gradient":1,
         "max_cycles": 9E7,
         "log_frequency":1E5,
         "sample_frequency": 1E5

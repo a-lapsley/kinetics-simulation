@@ -25,7 +25,7 @@ Program to simulate reactions over time for Part II Chemistry Programming Practi
 ### Reaction Config Files
 * `parameters` Specifies various parameters for the reaction. 
     * `delta_t` Time interval by which each discrete step in the reaction simulation should progress. Lower values result in more accurate simulations but will take longer to simulate.
-    * `equillibrium_threshold` Specifies value which the change between concentrations of all species between successive time steps must be less than in order for reaction to be considered at equillibrium. Lower values will give higher confidence that reaction has reached equillibrium but will take longer to reach this point. Note that if `delta_t` is changed `equillibrium_threshold` must be changed accordingly to account for the smaller time interval.
+    * `equillibrium_gradient` Used to specify the threshold within which a reaction is considered to be at equillibrium. A reaction is considered to be at equillibrium if the magnitude of the change in concentration of every species between successive time intervals is less than `equillibrium_gradient * delta_t`.
     * `max_cycles` Number of iterations to run simulation before stopping. If simulation mode is `fixed`, this specifies the number of cycles to run. If simulation mode is `equillibrium`, the simulation will stop when it reaches equillibrium or `max_cycles` is reached, whichever comes first.
     * `log_frequency` How often simulation should log progress to the console. E.g, a value of `1E3` logs to the console every 1000 iterations. Set to 0 for no logging. 
     * `sample_frequency` How often simulation should sample current data and record to the output file. E.g, a value of `1E3` means that every 1000th data point gets sampled. If set to 1, all data points are sampled. This allows for simulating a reaction over a small time scale for greater accuracy and over many iterations but without creating an output data file that is impractically large.
@@ -52,6 +52,9 @@ Program to simulate reactions over time for Part II Chemistry Programming Practi
 
 ## Included data files
 Some pregenerated data output files are included as examples, and to save computation time, as some of these files took over an hour to generate.
+
+NOTE: Some of these files were generated with an older version of the program where equillibrium was specified with an absolute value instead of a gradient (called `equillibrium_threshold` in the data files). In the new format, `equillibrium_gradient` should be set equal to `equillibrium_threshold / delta_t`. 
+
 * `oregonator_9s_test`  Test run of the Oregonator system over a 9s time period. 
 * `oregonator_run_90s`  Run of the Oregonator system over a 90s time period. 
 * `protein_folding_run` Data for the simulation of the protein folding system with no denaturant over time. 

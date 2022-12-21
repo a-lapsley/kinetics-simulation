@@ -2,7 +2,6 @@ from reaction import *
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-import os
 import time
 
 class Timer():
@@ -99,7 +98,7 @@ def time_simulate(args):
     delta_t = float(parameters["delta_t"])
     max_cycles = int(parameters["max_cycles"])
     sample_freq = int(parameters["sample_frequency"])
-    equillibrium_threshold = float(parameters["equillibrium_threshold"])
+    equillibrium_gradient = float(parameters["equillibrium_gradient"])
     log = int(parameters["log_frequency"])
     
 
@@ -118,7 +117,7 @@ def time_simulate(args):
         data = simulate_to_equillibrium(
                             rxn,
                             delta_t,
-                            equillibrium_threshold,
+                            equillibrium_gradient,
                             max_cycles=max_cycles,
                             log=log,
                             sample_freq=sample_freq
@@ -258,7 +257,8 @@ def simulate_to_equillibrium(
     """
     Simulates reaction with time interval delta_t until the difference in
     concentration of all species between successive steps is less than the 
-    specified threshold - this is taken to mean the system is at equillibrium.
+    specified gradient * delta_t - this is taken to mean the system is at 
+    equillibrium.
 
     By specifying max_cycles the simulation will stop once this number of 
     cycles is reached, regardless of whether equillibrium has been reached or

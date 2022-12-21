@@ -1,5 +1,3 @@
-from process import *
-
 class Reaction:
     """
     Class to hold all information for a specified reaction.
@@ -12,12 +10,14 @@ class Reaction:
 
     Methods:
         add_species(self, name, species)    Adds a species to list
-        add_process(self, process)          Adds a Process object to list
+        add_process(self, process)          Adds a process to list
         tick(self, delta_t)                 Proceeds reaction by time interval
         get_species_keys(self)              Returns list of keys for each
                                             species
         get_concs(self)                     Returns concentrations of each
-                                            species          
+                                            species
+        log(self)                           Prints out information about           
+                                            Reaction object to console
     """
 
     def __init__(self):
