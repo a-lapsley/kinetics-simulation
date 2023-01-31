@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 import time
+import os
 
 class Timer():
     #Simple object to handle timing of program run times    
@@ -402,7 +403,7 @@ def specify_output_file():
         try:
             print("Please enter name of output file: ")
             name = input().strip().replace(".dat","")
-            dir = "output_files\\%s.dat" % name
+            dir = os.path.join("output_files", "%s.dat" % name)
             f = open(dir, "x")
             f.close()
             valid_file = True
@@ -419,7 +420,7 @@ def specify_input_file():
         try:
             print("Please enter name of input file: ")
             name = input().strip().replace(".dat","")
-            dir = "output_files\\%s.dat" % name
+            dir = os.path.join("output_files", "%s.dat" % name)
             f = open(dir)
             f.close()
             valid_file = True
@@ -497,7 +498,8 @@ def reaction_from_json(json_file, denaturant_conc=0):
     """
 
     #Load json data
-    with open("reaction_configs\\"+json_file,"r") as f:
+    dir = os.path.join("reaction_configs", json_file)
+    with open(dir,"r") as f:
         data = json.load(f)
     
     #Create Reaction object and add Species and Process objects 
